@@ -1,5 +1,5 @@
 FROM node:lts-alpine
-RUN mkdir -p /home/node/api/node_modules && chown -R node:node /hove/node/api
+RUN mkdir -p /home/ubuntu/backLaboratorioSO/node_modules && chown -R node:node /home/ubuntu/backLaboratorioSO
 WORKDIR /home/node/api
 COPY package.json yarn.* ./
 USER node
