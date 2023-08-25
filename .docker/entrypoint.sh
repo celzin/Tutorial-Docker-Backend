@@ -1,3 +1,3 @@
-yarn
+npm
 
-yarn start
+npm start
