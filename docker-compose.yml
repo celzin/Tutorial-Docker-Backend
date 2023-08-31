@@ -3,11 +3,10 @@ version: '3'
 services:
   node-server:
     build: .
+    command : npm start
     container_name: node-server
-    entrypoint: ./.docker/entrypoint.sh
-    volumes:
-      - .:/home/ubuntu/backLaboratorioSO
-      - /home/ubuntu/backLaboratorioSO/node_modules
     ports:
       - '3003:3003'
+    volumes:
+      - .:/usr/app
      
