@@ -6,7 +6,7 @@ services:
     command : npm start
     container_name: node-server
     ports:
-      - '3003:3003'
+      - '3003:3000'
     volumes:
       - .:/usr/app
      
