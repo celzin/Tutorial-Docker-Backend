@@ -54,13 +54,17 @@ docker build -t meu-backend:1.0 .
 
 Isso irá construir a imagem com o nome `meu-backend` e a tag `1.0`. Certifique-se de incluir o `.` no final do comando para indicar que o `Dockerfile` está no diretório atual.
 
+![Alt text](image-1.png)
+
 # Passo 5: Executando o Container Docker
 
 Agora, você pode executar um container com a imagem recém-criada:
 
 ```bash
-docker run -d -p 3000:3000 --name meu-backend-container meu-backend:1.0
+docker run -d -p 3000:3000 --name backend-container meu-backend:1.0
 ```
+
+![Alt text](image-2.png)
 
 - `-d` executa o container em segundo plano.
 - `-p 3000:3000` mapeia a porta 3000 do seu sistema para a porta 3000 dentro do container.
@@ -70,6 +74,8 @@ docker run -d -p 3000:3000 --name meu-backend-container meu-backend:1.0
 # Passo 6: Acessando o Backend
 
 Agora, o seu backend deve estar em execução no container e acessível no seu sistema local na porta 3000. Pode acessá-lo através de um navegador da web ou usando ferramentas de teste de API.
+
+![Alt text](image-4.png)
 
 Certifique-se de que todas as dependências e configurações necessárias para o seu aplicativo estejam corretamente configuradas no código do backend e no Dockerfile.
 
