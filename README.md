@@ -16,7 +16,7 @@ Siga as seguintes etapas para criar um container que execute o backend disponív
 
 # Passo 1: Instalação do Docker
 
-Certifique-se de que tenha o Docker instalado. Você pode fazer o download e instalar o Docker a partir do site oficial (https://docs.docker.com/get-docker/).
+Certifique-se de que tenha o Docker instalado. Você pode fazer o download e instalar o Docker a partir do [site oficial](https://docs.docker.com/get-docker/).
 
 # Passo 2: Clonando o Repositório Git
 
