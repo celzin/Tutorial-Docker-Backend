@@ -1,3 +1,10 @@
+<br>
+<h1 align="center">
+    <a>
+        <img alt="Banner" title="#Banner" style="object-fit: fill; height:200px;" src="imgs/github-header-image.png"/>
+    </a>
+</h1>
+
 <div align="center" style="display: inline_block">
   <img align="center" alt="VS" src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
   <img align="center" alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
@@ -106,18 +113,6 @@
   - #### Criar `Dockerfile`:
     - Copie o conteúdo do `Dockerfile` do repositório do GitHub para este arquivo.
 
-    ```Dockerfile
-    FROM node:alpine
-    #RUN mkdir -p /home/ubuntu/backLaboratorioSO/node_modules && chown -R node:node /home/ubuntu/backLaboratorioSO
-    WORKDIR /usr/app
-    # RM package.json *.* ./
-    COPY package.json *.* ./
-    RUN npm install
-    COPY . .
-    EXPOSE 3000
-    CMD npm start
-    ```
-
   - #### Criar `app.js`:
     - Copie o conteúdo do arquivo `app.js` do repositório do GitHub para este arquivo. 
     - Se o comando `npm start` não funcionar, substitua `mysql2` por `mysql` no código.
@@ -135,12 +130,12 @@
 
 - ### Inicie o banco de dados MySQL:
    ```bash
-   sudo docker run --name mysql-container -d -v /var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=docker -e MYSQL_USER=docker -e MYSQL_PASSWORD=1234 mysql
+   sudo docker run --name mysql-container -d -v /var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=lab_so -e MYSQL_USER=lab_so -e MYSQL_PASSWORD=root mysql
    ```
 
 - ### Carregue os dados no banco de dados:
    ```bash
-   cat ./BD/base_cardapio.sql | docker exec -i mysql-container mysql -udocker -p1234 docker
+   cat ./BD/base_cardapio.sql | docker exec -i mysql-container mysql -ulab_so -proot lab_so
    ```
 
 - ### Construa a imagem Docker:
