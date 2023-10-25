@@ -12,71 +12,149 @@
     </a>
 </h1>
 
-Siga as seguintes etapas para criar um container que execute o backend disponível neste repositório Git.
+<div align="center" style="display: inline_block">
+  <img align="center" alt="VS" src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
+  <img align="center" alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+  <img align="center" alt="Docker" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" />
+  <img align="center" alt="MySQL" src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white" />
+</div>
 
-# Passo 1: Instalação do Docker
+<br>
+<h1 align="center">
+    <a>
+        <img alt="Banner" title="#Banner" style="object-fit: fill; height:200px;" src="imgs/github-header-image.png"/>
+    </a>
+</h1>
 
-Certifique-se de que tenha o Docker instalado. Você pode fazer o download e instalar o Docker a partir do [site oficial](https://docs.docker.com/get-docker/).
+# **Configuração do Projeto Docker**
 
-# Passo 2: Clonando o Repositório Git
+## 🐳 **1. Instalação do Docker no Linux**
 
-Primeiro, clone o repositório Git que contém o código do backend. Utilize o seguinte comando no terminal:
+- ### Atualize seus pacotes:
+   ```bash
+   sudo apt-get update
+   ```
 
-```bash
-git clone https://github.com/celzin/Tutorial-Docker-Backend
-```
+- ### Instale as dependências necessárias:
+   ```bash
+   sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+   ```
 
-Isso irá criar um diretório chamado `Tutorial-Docker-Backend` com o código-fonte do backend.
+- ### Adicione a chave GPG oficial do Docker:
+   ```bash
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   ```
 
-# Passo 3: Criando um Dockerfile
+- ### Adicione o repositório do Docker:
+   ```bash
+   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+   ```
 
-Dentro do diretório `Tutorial-Docker-Backend`, existe um arquivo `Dockerfile` para definir como o container Docker será construído. Aqui está o `Dockerfile` utilizado nesse repositório para um aplicativo Node.js:
+- ### Atualize novamente seus pacotes:
+   ```bash
+   sudo apt-get update
+   ```
 
-```Dockerfile
-FROM node:alpine
-#RUN mkdir -p /home/ubuntu/backLaboratorioSO/node_modules && chown -R node:node /home/ubuntu/backLaboratorioSO
-WORKDIR /usr/app
-# RM package.json *.* ./
-COPY package.json *.* ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD npm start
-```
+- ### Instale o Docker:
+   ```bash
+   sudo apt-get install docker-ce
+   ```
 
-# Passo 4: Construindo a Imagem Docker
+- ### Inicie e habilite o serviço Docker:
+   ```bash
+   sudo systemctl start docker
+   sudo systemctl enable docker
+   ```
 
-No diretório onde está criado o `Dockerfile`, use o seguinte comando para construir a imagem Docker:
+## 🛢 **2. Instalação da Imagem MySQL**
 
-```bash
-docker build -t meu-backend:1.0 .
-```
+- ### Puxe a imagem oficial do MySQL para o Docker:
+   ```bash
+   docker pull mysql
+   ```
 
-Isso irá construir a imagem com o nome `meu-backend` e a tag `1.0`. Certifique-se de incluir o `.` no final do comando para indicar que o `Dockerfile` está no diretório atual.
+## 🟢 **3. Instalação do NodeJS**
 
-![Alt text](image-1.png)
+- ### Atualize seus pacotes:
+   ```bash
+   sudo apt-get update
+   ```
 
-# Passo 5: Executando o Container Docker
+- ### Baixe o script de instalação do Node.js:
+   ```bash
+   curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+   ```
 
-Agora, você pode executar um container com a imagem recém-criada:
+- ### Instale o Node.js:
+   ```bash
+   sudo apt-get install -y nodejs
+   ```
 
-```bash
-docker run -d -p 3000:3000 --name backend-container meu-backend:1.0
-```
+## 📦 **4. Instalação do NPM**
 
-![Alt text](image-2.png)
+- ### Atualize o NPM:
+   ```bash
+   npm install npm@latest -g
+   ```
 
-- `-d` executa o container em segundo plano.
-- `-p 3000:3000` mapeia a porta 3000 do seu sistema para a porta 3000 dentro do container.
-- `--name meu-backend-container` atribui um nome ao container.
-- `meu-backend:1.0` é o nome da imagem que você deseja usar.
+- ### Instale Nodemon:
+   ```bash
+   npm install -g nodemon
+   ```
 
-# Passo 6: Acessando o Backend
+## 📁 **5. Configuração do Projeto**
 
-Agora, o seu backend deve estar em execução no container e acessível no seu sistema local na porta 3000. Pode acessá-lo através de um navegador da web ou usando ferramentas de teste de API.
+- ### Criar Pasta `atividade`:
+   ```bash
+   mkdir atividade && cd atividade
+   ```
 
-![Alt text](image-4.png)
+  - #### Criar Pasta `BD`:
+    ```bash
+    mkdir BD
+    ```
 
-Certifique-se de que todas as dependências e configurações necessárias para o seu aplicativo estejam corretamente configuradas no código do backend e no Dockerfile.
+  - #### Criar arquivo `base_cardapio.sql`:
+    - Copie o conteúdo do arquivo `base_cardapio.sql` do repositório do GitHub para esse arquivo.
 
-Este tutorial é um guia básico para criar um container Docker para um backend.
+  - #### Criar `Dockerfile`:
+    - Copie o conteúdo do `Dockerfile` do repositório do GitHub para este arquivo.
+
+  - #### Criar `app.js`:
+    - Copie o conteúdo do arquivo `app.js` do repositório do GitHub para este arquivo. 
+    - Se o comando `npm start` não funcionar, substitua `mysql2` por `mysql` no código.
+
+  - #### Criar `docker-compose.yml`:
+    - Copie o conteúdo do arquivo `docker-compose.yml` do repositório do GitHub para este arquivo.
+
+  - #### Criar `package-lock.json`:
+    - Copie o conteúdo do arquivo `package-lock.json` do repositório do GitHub para este arquivo.
+
+  - #### Criar `package.json`:
+    - Copie o conteúdo do arquivo `package.json` do repositório do GitHub para este arquivo. Lembre-se de alterar `mysql2` para `mysql` se necessário.
+
+## ▶️ **6. Execução**
+
+- ### Inicie o banco de dados MySQL:
+   ```bash
+   sudo docker run --name mysql-container -d -v /var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=docker -e MYSQL_USER=docker -e MYSQL_PASSWORD=1234 mysql
+   ```
+
+- ### Carregue os dados no banco de dados:
+   ```bash
+   cat ./BD/base_cardapio.sql | docker exec -i mysql-container mysql -udocker -p1234 docker
+   ```
+
+- ### Construa a imagem Docker:
+   ```bash
+   sudo docker build -t api-image .
+   ```
+
+- ### Execute o contêiner Docker:
+   ```bash
+   sudo docker run -p 3000:3000 --link mysql-container -v $(pwd):/usr/app --name api-container api-image
+   ```
+
+---
+
+Com isso, seu ambiente Docker com MySQL e Node.js estará configurado e em execução! Você pode acessar a API em `http://localhost:3000`.
